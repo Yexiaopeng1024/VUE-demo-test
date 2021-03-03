@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+    var matrix = [
+  [3, 0, 1, 4, 2],
+  [5, 6, 3, 2, 1],
+  [1, 2, 0, 1, 5],
+  [4, 1, 0, 1, 7],
+  [1, 0, 3, 0, 5]
+];
+        // var matrix = [[[-4,-5]]]
+    class NumMatrix {
+        constructor(matrix){
+          this.matrixPresum = matrix;
+          for (let i1 = 0; i1 < this.matrixPresum.length; i1++) {
+              this.matrixPresum[i1].unshift(0)
+             for (let i2 = 1; i2 < this.matrixPresum[i1].length; i2++) {
+                 this.matrixPresum[i1][i2]+=this.matrixPresum[i1][i2-1];         
+             }              
+          }
+          this.matrixPresum[this.matrixPresum.length] = [];
+          for (let i = 0; i < this.matrixPresum[0].length; i++) {
+              this.matrixPresum[this.matrixPresum.length-1].push(0)           
+          } 
+        }
+        sumRegion(row1,col1,row2,col2){
+            let sum = 0;
+            for (let i = row1; i <= row2; i++) {
+                console.log(this.matrixPresum[i][col2]);
+                console.log(this.matrixPresum[i][col1-1]);
+                sum +=  (this.matrixPresum[i][col2+1]-this.matrixPresum[i][col1]);               
+            }
+            return sum;
+        }
+    }
+    var obj = new NumMatrix(matrix);
+    console.log(obj);
+    var param_1 = obj.sumRegion(2,1,4,3)
+    console.log(param_1);
+    </script>
+</body>
+
+</html>
