@@ -10,7 +10,16 @@
 
 <body>
     <script>
-        console.log(a);
+        let obj1 = { options: { el: 'app', data: { name: 'qq', age: '18' } } };
+        console.log(obj1,"原来的object1");  
+        obj1._data = obj1.options.data;
+        let obj2 = obj1._data;
+        console.log(obj1._data);
+        console.log(obj2);
+        obj1.options.data.name = "dd";
+        console.log(obj1._data);
+        console.log(obj2);
+
     </script>
 </body>
 
